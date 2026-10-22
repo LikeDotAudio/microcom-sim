@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MicroCOM III</title>
+  <style>
+    :root { color-scheme: dark; }
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+    body { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+    #screen { display: block; outline: none; image-rendering: pixelated; box-shadow: 0 0 0 1px #222; }
+    #screen:focus { box-shadow: 0 0 0 1px #555; }
+    #hint { font: 12px ui-monospace, monospace; color: #777; height: 16px; }
+  </style>
+</head>
+<body>
+  <canvas id="screen" tabindex="0" aria-label="MicroCOM III 80x25 text screen"></canvas>
+  <div id="hint"></div>
+  <script type="module" src="/src/mc3/web.ts"></script>
+</body>
+</html>

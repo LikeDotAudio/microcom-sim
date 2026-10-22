@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>MicroCOM Simulator</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23111820'/%3E%3Cpath d='M4 4h2v2H4zM10 4h2v2h-2zM7 7h2v2H7zM4 10h2v2H4zM10 10h2v2h-2z' fill='%23f5a524'/%3E%3C/svg%3E">
+  <style>:root{--bg:#0b0f14;--panel:#121820;--border:#243040;--text:#dce4ee;--muted:#7f8ea3;--accent:#f5a524}@media (prefers-color-scheme:light){:root{--bg:#f4f6f9;--panel:#fff;--border:#d5dce6;--text:#18202b;--muted:#5b6878;--accent:#b86e00}}*{box-sizing:border-box}body{background:var(--bg);color:var(--text);margin:0;font:16px/1.5 system-ui,sans-serif}main{max-width:960px;margin:0 auto;padding:32px 16px 48px}h1{margin:0 0 4px;font-size:28px}.lede{color:var(--muted);max-width:70ch;margin:0 0 28px}.grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;display:grid}a.card{background:var(--panel);border:1px solid var(--border);color:inherit;border-radius:10px;padding:18px;text-decoration:none;display:block}a.card:hover,a.card:focus-visible{border-color:var(--accent);outline:none}.card h2{color:var(--accent);margin:0 0 6px;font-size:18px}.card p{color:var(--muted);margin:0;font-size:15px}.tag{color:var(--muted);font:12px ui-monospace,monospace}footer{color:var(--muted);max-width:75ch;margin-top:32px;font-size:14px}footer a{color:var(--accent)}</style>
+</head>
+<body>
+<main>
+  <h1>MicroCOM Simulator</h1>
+  <p class="lede">The Ward-Beck Systems MicroCOM II intercom matrix (1988–93) brought back to life: the original
+    assignment software, the frame it programmed and the panels it drove. Everything runs in your browser.
+    Open several tabs and they share one matrix, so panels in different tabs can talk to each other.</p>
+  <div class="grid">
+    <a class="card" href="emu.html">
+      <h2>MicroCOM II emulator</h2>
+      <p>The original DOS program, MCOM.EXE v3.20, unmodified, on an emulated 8086 PC. Bring your own copy of
+        MCOM.EXE. Upload to a simulated frame or to the matrix below.</p>
+      <span class="tag">emu.html</span>
+    </a>
+    <a class="card" href="matrix.html">
+      <h2>Matrix simulator</h2>
+      <p>A 2048-port matrix: 32 productions of panels, IFB and talent positions, remotes and utilities.
+        Live crosspoints, routing and audio.</p>
+      <span class="tag">matrix.html</span>
+    </a>
+    <a class="card" href="panel.html">
+      <h2>Panels</h2>
+      <p>M7880 key panels, talent turrets and the new MicroCOM 2026 station and producer panels.
+        Use your microphone and talk between tabs.</p>
+      <span class="tag">panel.html</span>
+    </a>
+    <a class="card" href="mc3.html">
+      <h2>MicroCOM III</h2>
+      <p>The assignment software reimagined in the MicroCOM II look, configuring the large virtual matrix.</p>
+      <span class="tag">mc3.html</span>
+    </a>
+  </div>
+  <footer>
+    MicroCOM II and its software are © 1991–93 Ward-Beck Systems Ltd. (developed by Weitech Computer Solutions).
+    The original program is not hosted here; the emulator runs a copy you provide, and it stays in your browser.
+    Part of the <a href="https://likedotaudio.github.io/WBSps.ca/">Ward-Beck Systems Preservation Society</a> archive.
+  </footer>
+</main>
+</body>
+</html>

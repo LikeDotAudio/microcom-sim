@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MicroCOM III shell > draws the title screen and status panel (snapshot) 1`] = `
+"   Define System    Data Transfer   Terminal Assignments    Utilities   Quit
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+
+
+                     █▀█▀█ ▀           █▀▀ █▀█ █▀█▀█  █ █ █
+                     █ █ █ █ █▀ █▀ █▀█ █   █ █ █ █ █  █ █ █
+                     █ █ █ █ █▄ █  █▄█ █▄▄ █▄█ █ █ █  █ █ █
+
+                    C O M M U N I C A T I O N S  S Y S T E M
+                                   Release 4.0
+
+                   2048 Port Virtual Matrix - 32 Productions
+
+
+
+
+
+
+
+      @ Copyright 1991,92,93,2026 WARD-BECK SYSTEMS  - all rights reserved
+ [F1]=Help  [ENTER]=Select  [F10]=Save  [ESC]=Abort  [CURSOR]=Browse Selections
+ Matrix Engine: 127.0.0.1:8048               Systems ID: 30   Status: ON-LINE
+ Production: PROD30        Size: 064 of 2048 Name: Science Now
+ Date: October 21, 2026    Time: 7:46 PM     Site: Calgary    Pending: NONE
+"
+`;

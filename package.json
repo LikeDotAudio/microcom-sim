@@ -1,0 +1,20 @@
+{
+  "name": "mcom-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Browser rewrite of Ward-Beck MicroCOM II Assignment Software v3.20",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "build:static": "tsc --noEmit && vite build --mode static",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "mc3": "node bin/mc3.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}

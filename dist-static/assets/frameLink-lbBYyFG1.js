@@ -1,0 +1,1 @@
+import{r as e}from"./socket-B3v6KNKh.js";function t(t){return e(t)}export{t as openFrameLink};
