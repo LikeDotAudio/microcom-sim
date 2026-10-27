@@ -18,6 +18,8 @@ export default defineConfig(({ mode }) => ({
         panel: resolve(import.meta.dirname, 'panel.html'),
         mc3: resolve(import.meta.dirname, 'mc3.html'),
         emu: resolve(import.meta.dirname, 'emu.html'),
+        // one station's keys in a row, for a taskbar to frame (the APK.audio OS footer)
+        strip: resolve(import.meta.dirname, 'strip.html'),
         // the landing page only on the static site (the Python server has its own / route)
         ...(mode === 'static' ? { index: resolve(import.meta.dirname, 'index.html') } : {}),
       },

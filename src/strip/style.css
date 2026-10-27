@@ -1,0 +1,52 @@
+/* The key strip: one row, transparent, so it sits on whatever bar frames it. The keys are the M7880's
+   black paddles with their red LED legends; latched is the talk colour, held is amber and flashing,
+   a caller glows. */
+:root {
+  --key: #16191d;
+  --edge: #3a4048;
+  --led: #ff3b2f;
+  --talk: #2fbf71;
+  --held: #f5a524;
+  --call: #f5a524;
+  --text: #dce4ee;
+  --muted: #7f8ea3;
+  color-scheme: normal;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: transparent; overflow: hidden; }
+body { font: 11px/1 system-ui, sans-serif; color: var(--text); }
+#app { display: inline-flex; height: 100%; }
+.strip { display: flex; align-items: center; gap: 4px; height: 100%; padding: 0 2px; white-space: nowrap; }
+
+.st-conn { width: 7px; height: 7px; border-radius: 50%; flex: none; background: var(--muted); }
+.st-conn.on { background: var(--talk); box-shadow: 0 0 5px var(--talk); }
+.st-conn.off { background: #b91c1c; }
+
+.st-pick { height: 26px; max-width: 120px; padding: 0 4px; font: 600 11px system-ui, sans-serif; color: var(--text);
+  background: var(--key); border: 1px solid var(--edge); border-radius: 4px; }
+.st-keys { display: flex; gap: 3px; }
+.st-wait { color: var(--muted); padding: 0 6px; }
+
+.st-key { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  width: 40px; height: 30px; padding: 0; cursor: pointer; user-select: none; touch-action: none;
+  background: var(--key); border: 1px solid var(--edge); border-radius: 3px; }
+.st-key .lg { font: 700 10px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.04em; color: var(--led);
+  text-shadow: 0 0 4px color-mix(in srgb, var(--led) 60%, transparent); }
+.st-key .led { width: 14px; height: 3px; border-radius: 1px; background: #2a2f36; }
+.st-key:hover { border-color: var(--muted); }
+.st-key:active { transform: translateY(1px); }
+.st-key.latch { border-color: var(--talk); background: color-mix(in srgb, var(--talk) 22%, var(--key)); }
+.st-key.latch .led { background: var(--talk); box-shadow: 0 0 5px var(--talk); }
+.st-key.press { border-color: var(--held); background: color-mix(in srgb, var(--held) 30%, var(--key)); }
+.st-key.press .led { background: var(--held); box-shadow: 0 0 6px var(--held); animation: flash 0.25s steps(1) infinite; }
+.st-key.calling { box-shadow: 0 0 0 1px var(--call), 0 0 8px var(--call); animation: glow 1s ease-in-out infinite alternate; }
+
+.st-btn { width: 26px; height: 26px; padding: 0; font-size: 13px; cursor: pointer; color: var(--text);
+  background: var(--key); border: 1px solid var(--edge); border-radius: 4px; }
+.st-btn:hover { border-color: var(--muted); }
+.st-btn.on { border-color: var(--talk); box-shadow: 0 0 5px var(--talk); }
+.st-btn.muted { border-color: #b91c1c; }
+
+@keyframes flash { 50% { opacity: 0.35; } }
+@keyframes glow { from { box-shadow: 0 0 0 1px var(--call), 0 0 3px var(--call); } to { box-shadow: 0 0 0 1px var(--call), 0 0 10px var(--call); } }
+@media (prefers-reduced-motion: reduce) { .st-key.press .led, .st-key.calling { animation: none; } }
