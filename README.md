@@ -42,7 +42,7 @@ APK.audio's TRUNK-CASTER pins this repo and builds it into its own tracked `inte
 
 ## Where the other docs come from
 
-`MATRIX.md`, `MC3.md`, `M2026.md` and `src/emu/README.md` explain how each part works. They, and everything here except `README.md` and `.github/`, are copied from `mcom-web/` of the private [microcom](https://github.com/LikeDotAudio/microcom) archive by its `tools/publish-sim.sh`. The exception is the key strip (`strip.html`, `src/strip/`, `test/strip/` and its entry in `vite.config.ts`), committed here directly and not yet in the archive — `publish-sim.sh` runs `rsync --delete`, so the next publish would remove it unless the strip is carried into `mcom-web/` first. Their commands (`cd mcom-tui …`, `cd mcom-web …`) are written for that archive: `mcom-web/` is this repo, and `mcom-tui/` (the Python engine and the Unicorn reference emulator) is not published.
+`MATRIX.md`, `MC3.md`, `M2026.md` and `src/emu/README.md` explain how each part works. They, and everything here except `README.md` and `.github/`, are copied from `mcom-web/` of the private [microcom](https://github.com/LikeDotAudio/microcom) archive by its `tools/publish-sim.sh`. The key strip (`strip.html`, `src/strip/`, `test/strip/`) was first committed here and has since been carried into the archive's `mcom-web/`; `publish-sim.sh` now refuses to run when this repo holds a file the archive lacks, so a change made here directly is named before `rsync --delete` could remove it. Their commands (`cd mcom-tui …`, `cd mcom-web …`) are written for that archive: `mcom-web/` is this repo, and `mcom-tui/` (the Python engine and the Unicorn reference emulator) is not published.
 
 ## Philosophy
 
@@ -57,6 +57,10 @@ APK.audio's TRUNK-CASTER pins this repo and builds it into its own tracked `inte
 MicroCOM II and its software are © 1991–93 Ward-Beck Systems Ltd., developed by Weitech Computer Solutions.
 This repository contains no part of the original program. Part of the
 [Ward-Beck Systems Preservation Society](https://likedotaudio.github.io/WBSps.ca/) archive.
+
+## 📚 Wiki
+
+The depth is in [Documentation/README.md](Documentation/README.md): [principles](Documentation/%F0%9F%8F%9BPhilosophy/PRINCIPLES.md), [architecture](Documentation/%F0%9F%A7%A9Manual%20and%20Artifacts/ARCHITECTURE.md), [delivery](Documentation/%F0%9F%8C%8DPublishing/DELIVERY.md).
 
 <!-- wiki:smoke -->
 **Smoke test** — ✅ PASS 2/2 since 2026-10-30 12:51 EDT — [results](Documentation/%F0%9F%A7%A9Manual%20and%20Artifacts/SMOKE.md)
