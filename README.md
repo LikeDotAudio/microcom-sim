@@ -57,3 +57,7 @@ APK.audio's TRUNK-CASTER pins this repo and builds it into its own tracked `inte
 MicroCOM II and its software are © 1991–93 Ward-Beck Systems Ltd., developed by Weitech Computer Solutions.
 This repository contains no part of the original program. Part of the
 [Ward-Beck Systems Preservation Society](https://likedotaudio.github.io/WBSps.ca/) archive.
+
+<!-- wiki:smoke -->
+**Smoke test** — ✅ PASS 2/2 since 2026-10-30 12:51 EDT — [results](Documentation/%F0%9F%A7%A9Manual%20and%20Artifacts/SMOKE.md)
+<!-- /wiki:smoke -->
