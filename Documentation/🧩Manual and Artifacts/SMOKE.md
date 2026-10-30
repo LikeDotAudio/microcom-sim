@@ -13,4 +13,4 @@ Is `microcom-sim` deployed? Written by `.apk.scripts/smoke.py` from the module's
 
 Re-run: `python3 .apk.scripts/smoke.py PODS/POD.THIN/Softapps/HARDWARE_AND_NETWORK/INTERCOM.TRUNK-CASTER/SRC/microcom-sim`
 
-<!-- smoke:sig eb30cc456ac3 since 2026-10-30 12:51 EDT -->
+<!-- smoke:sig d4109fbaa696 since 2026-10-30 12:51 EDT -->
