@@ -10,7 +10,7 @@ The Ward-Beck Systems MicroCOM II intercom matrix (1988–93), running in a web 
 | [Matrix simulator](https://likedotaudio.github.io/microcom-sim/matrix.html) | A 2048-port matrix engine (32 productions × 64 ports) with routing and live audio (`src/matrix/`), running in a SharedWorker so all your tabs share one matrix. |
 | [Panels](https://likedotaudio.github.io/microcom-sim/panel.html) | M7880 key panels, talent turrets, and the MicroCOM 2026 station and producer panels (`src/panel/`, `src/m2026/`). Panels in different tabs hear each other. |
 | [MicroCOM III](https://likedotaudio.github.io/microcom-sim/mc3.html) | The assignment software in the MicroCOM II look, for the large virtual matrix (`src/mc3/`). |
-| `strip.html` | One station's keys in a single row, small enough for a taskbar (`src/strip/`). `strip.html?p=PROD01/PNL02&keys=12`; framed, it reports its width and station to its parent with `{ source: 'microcom-strip', … }`. The APK.audio OS footer frames it. Not linked from the landing page. |
+| `strip.html` | One station's keys in a single row, small enough for a taskbar (`src/strip/`). `strip.html?p=PROD01/PNL02&keys=12`; framed, it reports its width and station to its parent with `{ source: 'microcom-strip', v, … }` (typed in `src/strip/wire.ts`). The APK.audio OS footer frames it. Not linked from the landing page. |
 
 `index.html` is the landing page of the static build.
 
@@ -28,7 +28,7 @@ On the static site nothing leaves your browser: the emulator's drive C: and the 
 
 ```bash
 npm ci
-npm test               # vitest: 126 pass, 11 skip — the skips need MCOM.EXE or mcom-tui's Python engine
+npm test               # vitest: 135 pass, 6 skip — the skips need MCOM.EXE or the original MCOMFILE.*
 npm run typecheck      # tsc --noEmit
 npm run build:static   # -> dist-static/: relative assets, works under any sub-path, includes index.html
 npm run build          # -> dist/: absolute assets, for the Python engine to serve
@@ -48,7 +48,7 @@ APK.audio's TRUNK-CASTER pins this repo and builds it into its own tracked `inte
 
 - **Static first.** The whole intercom runs in the browser with no server (`src/local/`); the Python engine is an option the page detects, never a requirement (`src/local/mode.ts`).
 - **One matrix per browser.** The engine lives in a SharedWorker, so every tab and every frame on the origin is on the same matrix (`src/local/socket.ts`, `worker.ts`).
-- **The local engine answers like the real one.** `test/local-parity.test.ts` runs one script through both engines and compares every reply and broadcast when the Python engine is present.
+- **The local engine answers like the real one.** `test/local-parity.test.ts` runs one script through both engines and compares every reply and broadcast: live when the Python engine is present, otherwise against its recorded trace (`test/fixtures/local-parity.trace.json`), so CI checks it too.
 - **Bring your own original.** The emulator runs the visitor's own MCOM.EXE; nothing of Ward-Beck's program is in this repo, and `tools/publish-sim.sh` in the archive deletes MCOM.EXE, MCOM.HLP and MCOMFILE.* from anything it publishes.
 - **The CPU is checked against a reference.** `test/emu-diff.test.ts` steps the TypeScript 8086 against Unicorn on MCOM.EXE (skipped without them).
 

@@ -9,6 +9,7 @@ import { History } from './history';
 import { ByteReader, FacilityLink } from './link';
 import { Profile, type ProfileRaw } from './profile';
 import { PERIOD, Proximity } from './proximity';
+import { PROTOCOL } from '../matrix/types';
 
 const PRODUCER_MODELS = new Set(['M2026P']);
 
@@ -122,7 +123,7 @@ export class Host {
     let audioGid: number | null = null;
     const sendAudio: Send = b => out.binary(b);
     const sub = (m: Msg) => { const v = view(m); if (v) out.json(v); };
-    out.json({ t: 'hello', admin: role.admin, gid: role.gid });
+    out.json({ t: 'hello', admin: role.admin, gid: role.gid, proto: PROTOCOL });
     const first = view({ t: 'snapshot', state: engine.snapshot() });
     if (first) out.json(first);
     engine.subscribers.add(sub);

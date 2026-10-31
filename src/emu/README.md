@@ -13,7 +13,7 @@ file for file:
 | `uart.ts` | `uart.py` | 8250 + INT 14h, serial.log |
 | `sim.ts` | `matrix_sim.py` | the simple simulated frame |
 | `pc.ts` | `__main__.py` | the host loop: slice, timer tick, serial poll |
-| `screen.ts`, `keys.ts`, `cp437.ts` | `terminal.py` | canvas renderer, browser keys → BIOS codes |
+| `screen.ts`, `keys.ts` (CP437 from `../mc3/core/cp437.ts`, the one table) | `terminal.py` | canvas renderer, browser keys → BIOS codes |
 | `store.ts` | — | drive C: in IndexedDB |
 | `link.ts` | `--com1` | COM1: none, `sim.ts`, or a frame of the in-browser engine (`src/local/frameLink.ts`) |
 

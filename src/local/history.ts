@@ -3,6 +3,7 @@
 // while a segment is open every station that received it is noted, so each panel can list exactly what
 // was said to it and replay it. Captions: the Python engine runs faster-whisper; the browser engine has
 // no speech-to-text, so items keep text = null (the panel shows the audio only).
+import type { SaidItem, SaidWord } from '../matrix/types';
 import type { Engine } from './engine';
 import { RATE } from './audio';
 import { now } from './engine';
@@ -19,10 +20,11 @@ export class Segment {
   t1 = 0;
   quiet = 0;
   text: string | null = null;
-  words: [number, number, string][] | null = null;
+  words: SaidWord[] | null = null;
   constructor(readonly id: number, readonly src: number, readonly t0: number) {}
 
-  item() {
+  /** what the panels receive ('said' / 'history'): the one SaidItem type of src/matrix/types.ts */
+  item(): SaidItem {
     return { id: this.id, src: this.src, dsts: [...this.dsts].sort((a, b) => a - b), t0: this.t0,
       t1: this.t1 || now(), text: this.text, words: this.words };
   }

@@ -1,7 +1,7 @@
 // 80x25 colour text screen on a canvas: CP437 with box-drawing and block characters drawn as
 // geometry so lines join cleanly (as the episode-3.1 screenshots were rendered), blink or bright
 // background for attribute bit 7, and the hardware cursor.
-import { CP437 } from './cp437';
+import { CP437 } from '../mc3/core/cp437';
 
 export const CGA = ['#000000', '#0000aa', '#00aa00', '#00aaaa', '#aa0000', '#aa00aa', '#aa5500', '#aaaaaa',
   '#555555', '#5555ff', '#55ff55', '#55ffff', '#ff5555', '#ff55ff', '#ffff55', '#ffffff'];

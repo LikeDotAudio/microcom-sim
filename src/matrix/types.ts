@@ -1,4 +1,9 @@
 // Wire types of the matrix engine WebSocket API (see mcom-tui/mcommatrix/server.py).
+// The one written-down shape of /ws, for the Python engine and the browser engine (src/local/) alike.
+
+/** Version of the /ws message set, sent in 'hello' (server.py PROTOCOL, src/local/host.ts). A field added
+ *  keeps it; a message renamed, removed or reshaped bumps it on both engines together. */
+export const PROTOCOL = 1;
 
 export type RouteKind =
   | 'talk' | 'listen' | 'listen-lm' | 'grp' | 'call' | 'cam' | 'iso' | 'conf'
@@ -92,7 +97,7 @@ export type ServerMsg =
   | { t: 'links'; links: LinkStatus[] }
   | { t: 'station'; station: Station | null }
   | { t: 'error'; message: string }
-  | { t: 'hello'; admin: boolean; gid: number | null }
+  | { t: 'hello'; admin: boolean; gid: number | null; proto?: number }
   | { t: 'panellink'; gid: number; url: string }
   | { t: 'audio'; on: boolean; gid: number | null }
   | { t: 'meta'; gid: number; meta: PersonMeta }

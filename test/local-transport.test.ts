@@ -3,6 +3,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { ACK, ENQ, SOH, SYN, checksum } from '../src/local/link';
 
+import { PROTOCOL } from '../src/matrix/types';
 type Mod = typeof import('../src/local/socket') & typeof import('../src/local/frameLink');
 let mod: Mod;
 
@@ -28,7 +29,7 @@ describe('local engine transport', () => {
     ws.onmessage = ev => { if (typeof ev.data === 'string') got.push(JSON.parse(ev.data)); };
     await until(() => got.length >= 2);
     expect(opened).toBe(true);
-    expect(got[0]).toEqual({ t: 'hello', admin: true, gid: null });
+    expect(got[0]).toEqual({ t: 'hello', admin: true, gid: null, proto: PROTOCOL });
     expect(got[1].t).toBe('snapshot');
     ws.send(JSON.stringify({ t: 'station', gid: 1 }));
     await until(() => got.some(m => m.t === 'station'));

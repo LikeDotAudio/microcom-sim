@@ -1,6 +1,6 @@
 // State store: applies server messages, keeps derived indices (routes by src/dst, tallies). No DOM.
 import {
-  LISTEN_KINDS, TALK_KINDS,
+  LISTEN_KINDS, PROTOCOL, TALK_KINDS,
   type ExtKey, type FacilityInfo, type LinkStatus, type LogEvent, type Port, type ProfileInfo,
   type Route, type RouteTuple, type ServerMsg, type Snapshot, type Station, type TalentMap, type TalentState,
   type Blip, type FacMeta, type NearPair, type PersonMeta, type SaidItem,
@@ -44,6 +44,8 @@ export class Store {
   lastError = '';
   /** what this connection may do: the local operator (admin) or one panel unlocked by a link */
   role: { admin: boolean; gid: number | null } = { admin: true, gid: null };
+  /** the engine's /ws protocol version (its hello's proto; 0 = an engine from before PROTOCOL) */
+  proto = 0;
   /** shareable panel URLs received from the engine, by gid */
   panelLinks = new Map<number, string>();
   audioGid: number | null = null;
@@ -106,7 +108,12 @@ export class Store {
       case 'links': this.setLinks(msg.links); this.emit('links'); break;
       case 'station': this.station = msg.station; this.emit('station'); break;
       case 'error': this.lastError = msg.message; this.emit('error', msg.message); break;
-      case 'hello': this.role = { admin: msg.admin, gid: msg.gid }; this.emit('hello'); break;
+      case 'hello':
+        this.role = { admin: msg.admin, gid: msg.gid };
+        this.proto = msg.proto ?? 0;     // engines before PROTOCOL sent none
+        if (this.proto !== PROTOCOL) console.warn(`matrix engine speaks /ws protocol ${this.proto}, this page ${PROTOCOL}`);
+        this.emit('hello');
+        break;
       case 'panellink': this.panelLinks.set(msg.gid, msg.url); this.emit('panellink', msg); break;
       case 'audio': this.audioGid = msg.on ? msg.gid : null; this.emit('audio'); break;
       case 'levels':

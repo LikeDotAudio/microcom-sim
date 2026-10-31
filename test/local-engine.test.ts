@@ -7,6 +7,7 @@ import { Host } from '../src/local/host';
 import { ACK, CR, ENQ, SOH, SYN, checksum } from '../src/local/link';
 import { panelRoutePath } from '../src/local/mode';
 import { Profile } from '../src/local/profile';
+import { PROTOCOL } from '../src/matrix/types';
 import { resolvePanel } from '../src/panel/route';
 import type { Msg } from '../src/local/engine';
 
@@ -92,8 +93,8 @@ describe('connections and audio', () => {
     const got: Msg[] = [], op: Msg[] = [];
     const panel = host.connect(host.access.panelToken(5), 'https://x.github.io/sim/panel.html', { json: m => got.push(m), binary: () => {} });
     host.connect(null, 'https://x.github.io/sim/matrix.html', { json: m => op.push(m), binary: () => {} });
-    expect(got[0]).toEqual({ t: 'hello', admin: false, gid: 5 });
-    expect(op[0]).toEqual({ t: 'hello', admin: true, gid: null });
+    expect(got[0]).toEqual({ t: 'hello', admin: false, gid: 5, proto: PROTOCOL });
+    expect(op[0]).toEqual({ t: 'hello', admin: true, gid: null, proto: PROTOCOL });
     const snap = got[1].state as Record<string, unknown[]>;
     expect(snap.facilities).toEqual([]);
     panel.message(JSON.stringify({ t: 'key', gid: 6, slot: 0 }));

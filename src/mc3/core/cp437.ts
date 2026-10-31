@@ -1,4 +1,6 @@
 // IBM PC code page 437 (the VGA text-mode character set) <-> Unicode, and the CGA 16-colour palette.
+// The one CP437 table of mcom-web: MicroCOM III and the 8086 emulator (src/emu/) both import it.
+// (mcom-tui/mcomtui/terminal.py draws the same glyphs on the Python side.)
 
 const LOW = ' ☺☻♥♦♣♠•◘○◙♂♀♪♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼';
 const HIGH = 'ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒáíóúñÑªº¿⌐¬½¼¡«»░▒▓│┤╡╢╖╕╣║╗╝╜╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀αßΓπΣσµτΦΘΩδ∞φε∩≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ ';
@@ -14,6 +16,13 @@ REVERSE.set(' ', 32);
 /** Unicode character -> CP437 byte, or -1 if the character has no CP437 glyph. */
 export function toCp437(ch: string): number {
   return REVERSE.get(ch) ?? -1;
+}
+
+/** A typed (or pasted) character -> the CP437 byte a keyboard would send: printable bytes only
+ *  (the 0x01-0x1F glyphs are never typed), and a no-break space is 0xFF, not NUL. */
+export function typedCp437(ch: string): number | undefined {
+  const b = ch === '\u00a0' ? 0xff : toCp437(ch);
+  return b >= 32 ? b : undefined;
 }
 
 /** Decode a CP437 byte string (e.g. copied from MCOM.EXE) to Unicode. */

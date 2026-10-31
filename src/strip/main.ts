@@ -17,6 +17,7 @@ import { MatrixClient } from '../matrix/ws';
 import { panelHref, resolveEngine } from '../local/mode';
 import { Voice } from '../panel/voice';
 import { chooseStation, DEFAULT_KEYS, keysThatFit, panelPorts, STATION_KEY, stationName, stripKeys, type StripKey } from './model';
+import { isFrameToStrip, parentOrigin, stripMessage, type StripToFrame } from './wire';
 
 const params = new URLSearchParams(location.search);
 const maxKeys = Math.max(1, Math.min(64, Number(params.get('keys')) || DEFAULT_KEYS));
@@ -57,11 +58,13 @@ open.addEventListener('click', () => {
 const conn = el('span', { class: 'st-conn off', title: 'connecting to the matrix…' });
 app.replaceChildren(el('div', { class: 'strip' }, conn, picker, row, audio, open));
 
-function tell(extra: Record<string, unknown> = {}) {
+const PARENT = parentOrigin((location as Location & { ancestorOrigins?: ArrayLike<string> }).ancestorOrigins, document.referrer);
+
+function tell(extra: Pick<StripToFrame, 'open' | 'p'> = {}) {
   if (window.parent === window) return;
   const p = gid !== null ? store.port(gid) : null;
   const calling = keys.filter(k => isCalling(k)).length;
-  window.parent.postMessage({ source: 'microcom-strip', width: Math.ceil(app.scrollWidth), station: p?.label ?? null, calling, ...extra }, '*');
+  window.parent.postMessage(stripMessage(Math.ceil(app.scrollWidth), p?.label ?? null, calling, extra), PARENT);
 }
 
 function fillPicker() {
@@ -177,7 +180,7 @@ store.subscribe(topic => {
 });
 addEventListener('resize', () => tell());
 addEventListener('message', ev => {
-  if (ev.source !== window.parent || ev.data?.source !== 'apkos-footer' || !Number.isFinite(ev.data.room)) return;
+  if (ev.source !== window.parent || !isFrameToStrip(ev.data)) return;
   if (room === ev.data.room) return;
   room = ev.data.room;
   renderKeys();

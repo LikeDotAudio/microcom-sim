@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { incomplete, parseInput, AnsiRenderer } from '../../src/mc3/ansi';
 import { arms, glyph, merge } from '../../src/mc3/core/boxes';
-import { CP437, decodeCp437, encodeCp437, toCp437 } from '../../src/mc3/core/cp437';
+import { CP437, decodeCp437, encodeCp437, toCp437, typedCp437 } from '../../src/mc3/core/cp437';
 import { parseKeys } from '../../src/mc3/core/keys';
 import { Runtime } from '../../src/mc3/core/runtime';
 import { cells, fit, Screen } from '../../src/mc3/core/screen';
@@ -22,6 +22,12 @@ describe('CP437', () => {
     for (let i = 1; i < 255; i++) expect(toCp437(CP437[i])).toBe(i);
     expect(decodeCp437(encodeCp437('╒╦══╤ ░▒▓ Ç'))).toBe('╒╦══╤ ░▒▓ Ç');
     expect([...encodeCp437('€')]).toEqual([0x3f]);
+  });
+  it('maps typed characters the way the emulator keyboard sends them', () => {
+    for (let i = 32; i < 255; i++) expect(typedCp437(CP437[i])).toBe(i);
+    expect(typedCp437('\u00a0')).toBe(0xff);
+    expect(typedCp437('☺')).toBeUndefined();
+    expect(typedCp437('€')).toBeUndefined();
   });
 });
 

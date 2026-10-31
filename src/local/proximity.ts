@@ -1,6 +1,7 @@
 // Acoustic proximity calibration (MicroCOM 2026), port of mcommatrix/proximity.py: idle panels take
 // turns playing a short, quiet 18-19.5 kHz blip; every other panel with audio on measures that band and
 // reports the SNR. The engine keeps a smoothed 'near' score per pair. Detection happens in the pages.
+import type { Blip, NearPair } from '../matrix/types';
 import type { AudioHub } from './audio';
 import type { Engine } from './engine';
 import type { History } from './history';
@@ -36,7 +37,8 @@ export class Proximity {
     if (!idle.length) return;
     const gid = idle[Math.floor(Math.random() * idle.length)];
     this.current = { id: Math.floor(now() * 1000), gid, listeners: new Set(joined.filter(g => g !== gid)) };
-    this.engine.publish({ t: 'blip', id: this.current.id, gid, in: 0.6, dur: 0.25, band: [...BAND] });
+    const blip: Blip = { id: this.current.id, gid, in: 0.6, dur: 0.25, band: [...BAND] };   // the panels' Blip (src/m2026/proximity.ts)
+    this.engine.publish({ t: 'blip', ...blip });
   }
 
   heard(listener: number, blipId: number, emitter: number, snrDb: number) {
@@ -50,7 +52,7 @@ export class Proximity {
   }
 
   /** Symmetric 'same room' pairs: [a, b, score]. */
-  near(): [number, number, number][] {
+  near(): NearPair[] {
     const out = new Map<string, number>();
     for (const [k, s] of this.scores) {
       const [a, b] = k.split(',').map(Number);

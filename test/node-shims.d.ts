@@ -7,7 +7,12 @@ declare module 'node:fs' {
   export function mkdtempSync(prefix: string): string;
   export function writeFileSync(p: string, data: string): void;
   export function readFileSync(p: string): Uint8Array;
+  export function readFileSync(p: string, enc: 'utf8'): string;
 }
+declare module 'node:crypto' {
+  export function createHash(alg: 'sha256'): { update(s: string): { digest(enc: 'hex'): string } };
+}
+declare const process: { env: Record<string, string | undefined> };
 declare module 'node:os' { export function tmpdir(): string }
 declare module 'node:path' {
   export function join(...p: string[]): string;

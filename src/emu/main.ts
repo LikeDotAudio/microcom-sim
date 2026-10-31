@@ -2,7 +2,7 @@
 // TypeScript 8086 with drive C: kept in this browser, COM1 to a simulated or in-browser frame.
 import './emu.css';
 import { VRAM } from './bios';
-import { CP437, FROM_UNICODE } from './cp437';
+import { CP437, typedCp437 } from '../mc3/core/cp437';
 import { Drive, type FileNode } from './drive';
 import { browserKey, KEY_TOKENS, SCAN } from './keys';
 import { hasEngineLink, type LinkChoice, openBackend } from './link';
@@ -353,7 +353,7 @@ canvas.addEventListener('pointerdown', () => canvas.focus());
 // soft keyboards: characters arrive as input events on the hidden textarea
 typein.addEventListener('input', () => {
   for (const ch of typein.value) {
-    const code = ch === '\n' ? KEY_TOKENS.ENTER : (SCAN[ch.toLowerCase()] ?? 0) << 8 | (FROM_UNICODE.get(ch) ?? ch.charCodeAt(0) & 0xFF);
+    const code = ch === '\n' ? KEY_TOKENS.ENTER : (SCAN[ch.toLowerCase()] ?? 0) << 8 | (typedCp437(ch) ?? ch.charCodeAt(0) & 0xFF);
     sendKey(code);
   }
   typein.value = '';

@@ -5,7 +5,7 @@ import { Dos } from './dos';
 import { Drive } from './drive';
 import { type Clock, Exit, Machine, realClock } from './machine';
 import { type Backend, nullBackend, TrafficLog, Uart } from './uart';
-import { CP437 } from './cp437';
+import { CP437 } from '../mc3/core/cp437';
 
 export interface PcOptions {
   drive: Drive;

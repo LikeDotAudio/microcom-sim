@@ -1,5 +1,5 @@
 // BIOS key codes: key-script tokens (as mcomtui's --keys) and browser KeyboardEvent mapping.
-import { FROM_UNICODE } from './cp437';
+import { typedCp437 } from '../mc3/core/cp437';
 
 export const KEY_TOKENS: Record<string, number> = {
   F1: 0x3B00, F2: 0x3C00, F3: 0x3D00, F4: 0x3E00, F5: 0x3F00, F6: 0x4000,
@@ -66,7 +66,7 @@ export function browserKey(e: Pick<KeyboardEvent, 'key' | 'code' | 'shiftKey' | 
   const scan = SCAN[base] ?? 0;
   if (e.altKey && /[a-z]/i.test(ch)) return [scan << 8, flags];
   if (e.ctrlKey && /[a-z]/i.test(ch)) return [(scan << 8) | (ch.toLowerCase().charCodeAt(0) - 96), flags];
-  const code = ch.charCodeAt(0) < 0x80 ? ch.charCodeAt(0) : FROM_UNICODE.get(ch);
+  const code = ch.charCodeAt(0) < 0x80 ? ch.charCodeAt(0) : typedCp437(ch);
   if (code === undefined) return null;
   return [(scan << 8) | code, flags];
 }
