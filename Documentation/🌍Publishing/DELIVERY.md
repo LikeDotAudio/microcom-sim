@@ -32,6 +32,11 @@ npm run build:static   # → dist-static/
 - `publish-sim.sh` → commit → push is manual.
 - The CPU-diff test never runs in CI (no MCOM.EXE on the runner); the engine parity runs there against the recorded trace.
 
+## Delivered 2026-10-31: portable file names (no `:` `|` or case twins)
+
+- The monorepo now checks out on Windows and macOS: no tracked name holds `<>:"|?*`, a trailing dot or space, a device name or a case-only twin. Colon folders became dot folders (the POD.x convention).
+- `vendor/apk-contracts/` re-synced: the bundled topic grammar names its producer `PLUGIN.CHROMECAST/SRC/Discovery.ChromeCast/src/lib.rs`. No behaviour change.
+
 ## Delivered from the 2026-10-30 audit
 
 All four items were made in the archive's `mcom-web/` and published here by `publish-sim.sh`. This repo is the intercom TRUNK-CASTER builds into its `intercom/`.
