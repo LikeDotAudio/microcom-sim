@@ -12,7 +12,7 @@ them. The commit and push here are by hand.
 
 ```
 npm ci
-npm test               # vitest — 135 passed, 6 skipped (2026-10-30); skips need MCOM.EXE / the original MCOMFILE.*
+npm test               # vitest — 135 passed, 6 skipped (2026-10-31); skips need MCOM.EXE / the original MCOMFILE.*
 npm run typecheck
 npm run build:static   # → dist-static/
 ```
@@ -41,3 +41,4 @@ All four items were made in the archive's `mcom-web/` and published here by `pub
 - **Versioned releases and handshake** — `package.json` 0.2.0; both engines send `hello.proto` = `PROTOCOL` (`src/matrix/types.ts`), and `Store.proto` records it and warns on a mismatch, so a TRUNK-CASTER bump that changes the protocol is visible. Git tags here: publishing them needs the owner.
 - **Docs survive a publish** — `Documentation/` (and README, `.github/`, LICENSE) are rsync-excluded, which also protects them from `--delete`; verified by the publish above leaving this wiki and the audit files in place. `publish-sim.sh`'s header now says so.
 - **WS-07 accent from the brand token** (from the SDK/contracts audit) — `#f5a524` replaced: `--accent` in `index.html`, `src/emu/emu.css`, `src/matrix/style.css` reads `var(--apk-accent)` from `vendor/apk-contracts/apk-tokens.css` (the APK.audio SDK's tokens, vendored), the matrix amber `--warn` is the token's `kinda`, the strip's key LEDs are a declared lamp amber (`#ffb000`, not the accent). Made upstream and published. Verified: tsc, static build, `npm test`.
+- **WS-07 tints and light-mode accent** (6cbd11f, LOOSE-sdk-microcom-sim) — the `rgba(245,165,36,a)` tints (`.drop.over`, `--sel`, `--grid-sel`) are `rgba(var(--apk-accent-rgb), a)`; the light-mode `--accent` (was `#b86e00` / `#c47a00`) is a `color-mix` of `var(--apk-accent)` with black and the light `--warn` one of `var(--apk-state-kinda)`; the favicon `data:` URIs keep the brand hex (a `data:` URI cannot read CSS variables). Published from the archive (12449ac there). Verified: `npm test` 135 passed, 6 skipped (2026-10-31).
