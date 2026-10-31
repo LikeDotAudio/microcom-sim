@@ -20,7 +20,7 @@
     --line: #d5dae0;
     --text: #1d2329;
     --muted: #5d6874;
-    --accent: #b86e00;
+    --accent: color-mix(in srgb, var(--apk-accent) 75%, black); /* light mode: the brand accent darkened for contrast on white, derived from the token */
     --ok: #1a7f37;
     --err: #c62828;
     --btn: #e8ebef;
@@ -104,7 +104,7 @@ pre.log {
 .drop {
   border: 2px dashed var(--line); border-radius: 10px; padding: 18px; text-align: center; margin: 8px 0;
 }
-.drop.over { border-color: var(--accent); background: rgba(245, 165, 36, .08); }
+.drop.over { border-color: var(--accent); background: rgba(var(--apk-accent-rgb), .08); }
 .muted { color: var(--muted); }
 .small { font-size: 12px; }
 .err { color: var(--err); }

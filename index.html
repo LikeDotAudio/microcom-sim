@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
   <title>MicroCOM Simulator</title>
+  <!-- favicon: a data: URI cannot read CSS variables, so the brand accent (contracts/tokens/brand.json accent.hex) is written here as %23f4902c; declared consumer -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23111820'/%3E%3Cpath d='M4 4h2v2H4zM10 4h2v2h-2zM7 7h2v2H7zM4 10h2v2H4zM10 10h2v2h-2z' fill='%23f4902c'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="vendor/apk-contracts/apk-tokens.css">
   <style>
     :root { --bg: #0b0f14; --panel: #121820; --border: #243040; --text: #dce4ee; --muted: #7f8ea3; --accent: var(--apk-accent); }
     @media (prefers-color-scheme: light) {
-      :root { --bg: #f4f6f9; --panel: #ffffff; --border: #d5dce6; --text: #18202b; --muted: #5b6878; --accent: #b86e00; }
+      :root { --bg: #f4f6f9; --panel: #ffffff; --border: #d5dce6; --text: #18202b; --muted: #5b6878; --accent: color-mix(in srgb, var(--apk-accent) 75%, black); /* light mode: the brand accent darkened for contrast on white, derived from the token */ }
     }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, sans-serif; }

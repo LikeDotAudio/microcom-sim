@@ -14,7 +14,7 @@
   --warn: var(--apk-state-kinda);
   --bad: #ff4d4f;
   --inp: #0e141b;
-  --sel: rgba(245, 165, 36, 0.14);
+  --sel: rgba(var(--apk-accent-rgb), 0.14);
   --key: #1c2632;
   --key-edge: #2c3a4c;
   --lamp-off: #2a3441;
@@ -23,7 +23,7 @@
   --grid-area: #0f151d;
   --grid-fac: rgba(140, 160, 190, 0.28);
   --grid-line: rgba(140, 160, 190, 0.10);
-  --grid-sel: rgba(245, 165, 36, 0.16);
+  --grid-sel: rgba(var(--apk-accent-rgb), 0.16);
   --grid-hover: rgba(255, 255, 255, 0.07);
 
   --rk-talk: #ff5a4f;
@@ -53,9 +53,9 @@
     --border: #d5dce5;
     --text: #18202b;
     --muted: #5d6b7e;
-    --accent: #c47a00;
+    --accent: color-mix(in srgb, var(--apk-accent) 75%, black); /* light mode: the brand accent darkened for contrast on white, derived from the token */
     --ok: #1a9c50;
-    --warn: #c47a00;
+    --warn: color-mix(in srgb, var(--apk-state-kinda) 75%, black); /* light mode: the kinda state tone darkened, as --accent */
     --bad: #d42a2c;
     --inp: #ffffff;
     --sel: rgba(196, 122, 0, 0.12);
