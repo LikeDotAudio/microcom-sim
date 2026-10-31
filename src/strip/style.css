@@ -6,8 +6,9 @@
   --edge: #3a4048;
   --led: #ff3b2f;
   --talk: #2fbf71;
-  --held: #f5a524;
-  --call: #f5a524;
+  /* the panel's amber key LEDs: a lamp colour, deliberately not the brand accent */
+  --held: #ffb000;
+  --call: #ffb000;
   --text: #dce4ee;
   --muted: #7f8ea3;
   color-scheme: normal;

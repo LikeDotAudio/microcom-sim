@@ -1,10 +1,12 @@
+/* brand and state colours: the APK.audio SDK tokens (vendor/apk-contracts, vendored by vendor_contract_web.py) */
+@import '../../vendor/apk-contracts/apk-tokens.css';
 :root {
   --bg: #0f141a;
   --panel: #161d25;
   --line: #2a3542;
   --text: #dde3ea;
   --muted: #8b98a7;
-  --accent: #f5a524;
+  --accent: var(--apk-accent);
   --ok: #3fb950;
   --err: #f0605a;
   --btn: #212b36;

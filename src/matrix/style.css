@@ -1,3 +1,5 @@
+/* brand and state colours: the APK.audio SDK tokens (vendor/apk-contracts, vendored by vendor_contract_web.py) */
+@import '../../vendor/apk-contracts/apk-tokens.css';
 /* MicroCOM web matrix — broadcast-control look. Dark by default, light via prefers-color-scheme. */
 :root {
   color-scheme: dark;
@@ -7,9 +9,9 @@
   --border: #243040;
   --text: #dce4ee;
   --muted: #7f8ea3;
-  --accent: #f5a524;
+  --accent: var(--apk-accent);
   --ok: #2ecc71;
-  --warn: #f5a524;
+  --warn: var(--apk-state-kinda);
   --bad: #ff4d4f;
   --inp: #0e141b;
   --sel: rgba(245, 165, 36, 0.14);
