@@ -36,7 +36,8 @@
 [data-apk-state="discovered" i],
 [data-apk-state="ok" i],
 [data-apk-state="locked" i],
-[data-apk-state="listening" i] { --apk-tone: var(--apk-state-good); --apk-tone-rgb: var(--apk-state-good-rgb); --apk-tone-tint: var(--apk-state-good-tint); }
+[data-apk-state="listening" i],
+[data-apk-state="serving" i] { --apk-tone: var(--apk-state-good); --apk-tone-rgb: var(--apk-state-good-rgb); --apk-tone-tint: var(--apk-state-good-tint); }
 [data-apk-state="offline" i],
 [data-apk-state="fault" i],
 [data-apk-state="down" i],
@@ -45,7 +46,8 @@
 [data-apk-state="no connection" i],
 [data-apk-state="lost clock" i],
 [data-apk-state="degraded" i],
-[data-apk-state="unavailable" i] { --apk-tone: var(--apk-state-dead); --apk-tone-rgb: var(--apk-state-dead-rgb); --apk-tone-tint: var(--apk-state-dead-tint); }
+[data-apk-state="unavailable" i],
+[data-apk-state="failed" i] { --apk-tone: var(--apk-state-dead); --apk-tone-rgb: var(--apk-state-dead-rgb); --apk-tone-tint: var(--apk-state-dead-tint); }
 [data-apk-state="unknown" i],
 [data-apk-state="declared" i],
 [data-apk-state="unasked" i],
@@ -58,7 +60,9 @@
 [data-apk-state="partial" i],
 [data-apk-state="under_test" i],
 [data-apk-state="cleared" i],
-[data-apk-state="absent" i] { --apk-tone: var(--apk-state-kinda); --apk-tone-rgb: var(--apk-state-kinda-rgb); --apk-tone-tint: var(--apk-state-kinda-tint); }
+[data-apk-state="absent" i],
+[data-apk-state="running" i],
+[data-apk-state="idle" i] { --apk-tone: var(--apk-state-kinda); --apk-tone-rgb: var(--apk-state-kinda-rgb); --apk-tone-tint: var(--apk-state-kinda-tint); }
 [data-apk-tone="good"] { --apk-tone: var(--apk-state-good); --apk-tone-rgb: var(--apk-state-good-rgb); --apk-tone-tint: var(--apk-state-good-tint); }
 [data-apk-tone="dead"] { --apk-tone: var(--apk-state-dead); --apk-tone-rgb: var(--apk-state-dead-rgb); --apk-tone-tint: var(--apk-state-dead-tint); }
 [data-apk-tone="kinda"] { --apk-tone: var(--apk-state-kinda); --apk-tone-rgb: var(--apk-state-kinda-rgb); --apk-tone-tint: var(--apk-state-kinda-tint); }
