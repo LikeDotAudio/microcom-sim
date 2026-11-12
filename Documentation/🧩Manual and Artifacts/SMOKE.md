@@ -4,13 +4,13 @@ Is `microcom-sim` deployed? Written by `.apk.scripts/smoke.py` from the module's
 
 ← [Wiki home](../README.md)
 
-**❌ FAIL** — 1/2 checks, since 2026-11-12 00:16 EST
+**✅ PASS** — 2/2 checks, since 2026-11-12 00:40 EST
 
 | Check | Target | Result | Detail |
 |---|---|---|---|
-| pushed | [microcom-sim](https://github.com/LikeDotAudio/microcom-sim.git) | ❌ | 1 commit(s) not pushed |
+| pushed | [microcom-sim](https://github.com/LikeDotAudio/microcom-sim.git) | ✅ | HEAD is on origin |
 | web | [index.html](https://apk.audio/APK%3ASoftapps/HARDWARE_AND_NETWORK/INTERCOM.TRUNK-CASTER/SRC/microcom-sim/index.html) | ✅ | HTTP 200 |
 
 Re-run: `python3 .apk.scripts/smoke.py PODS/POD.THIN/Softapps/HARDWARE_AND_NETWORK/INTERCOM.TRUNK-CASTER/SRC/microcom-sim`
 
-<!-- smoke:sig 83bc9b8b5888 since 2026-11-12 00:16 EST -->
+<!-- smoke:sig d4109fbaa696 since 2026-11-12 00:40 EST -->
