@@ -48,5 +48,13 @@ All four items were made in the archive's `mcom-web/` and published here by `pub
 - **WS-07 accent from the brand token** (from the SDK/contracts audit) — `#f5a524` replaced: `--accent` in `index.html`, `src/emu/emu.css`, `src/matrix/style.css` reads `var(--apk-accent)` from `vendor/apk-contracts/apk-tokens.css` (the APK.audio SDK's tokens, vendored), the matrix amber `--warn` is the token's `kinda`, the strip's key LEDs are a declared lamp amber (`#ffb000`, not the accent). Made upstream and published. Verified: tsc, static build, `npm test`.
 - **WS-07 tints and light-mode accent** (6cbd11f, LOOSE-sdk-microcom-sim) — the `rgba(245,165,36,a)` tints (`.drop.over`, `--sel`, `--grid-sel`) are `rgba(var(--apk-accent-rgb), a)`; the light-mode `--accent` (was `#b86e00` / `#c47a00`) is a `color-mix` of `var(--apk-accent)` with black and the light `--warn` one of `var(--apk-state-kinda)`; the favicon `data:` URIs keep the brand hex (a `data:` URI cannot read CSS variables). Published from the archive (12449ac there). Verified: `npm test` 135 passed, 6 skipped (2026-10-31).
 
+## Delivered 2026-11-11 – 2026-11-12
+
+From this repository's own commits (the commit message is the record):
+
+- vendor: apk-contracts web bundle refreshed from contracts/generated/web (report.ts: LogLine + ProblemRecord, System/Problems family) (`afe0111`)
+- vendor: apk-contracts web bundle refreshed from contracts/generated/web (five report codes, ROAD-3695; unit-gate, ROAD-3684) (`093de2f`)
+- re-vendor apk-contracts web bundle: contracts 2.4.0 retires APK.audio/Tests/{suite} (ROAD-3729) (`e4eb970`)
+
 ## Releases
 - **Released `2.0.0`, tag `v2.0.0`** (2026-11-01, ROAD-3452, the owner's V2) — no SDK pin; every manifest says 2.0.0; GitHub release `v2.0.0`.
